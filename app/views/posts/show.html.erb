@@ -7,7 +7,13 @@
 
 <p>
   <strong>Images:</strong>
-  <%= @post.images %>
+  <% if @post.images.attached? %>
+    <%= image_tag @post.images.first %>
+    <%= image_tag @post.images.second %>
+    <% @post.images.each do |image| %>
+      <%= image_tag image %> <br>
+    <% end %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
